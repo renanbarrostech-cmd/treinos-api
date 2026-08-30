@@ -170,6 +170,16 @@ export const StatsResponseSchema = z.object({
   totalTimeInSeconds: z.number(),
 });
 
+export const AiChatMessageSchema = z.object({
+  id: z.string(),
+  role: z.enum(["user", "assistant", "system"]),
+  parts: z.array(z.record(z.string(), z.unknown())),
+});
+
+export const AiChatBodySchema = z.object({
+  messages: z.array(AiChatMessageSchema),
+});
+
 export const HomeResponseSchema = z.object({
   activeWorkoutPlanId: z.uuid().nullable(),
   todayWorkoutDay: z
