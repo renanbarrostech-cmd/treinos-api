@@ -58,6 +58,7 @@ model WorkoutDay {
   isRest        Boolean           @default(false)
   weekDay       WeekDay
   exercises     WorkoutExercise[]
+  estimatedDurationInSeconds Int
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
 }
