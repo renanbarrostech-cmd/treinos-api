@@ -78,6 +78,32 @@ export const WorkoutPlanDetailSchema = z.object({
   ),
 });
 
+export const WorkoutDayParamsSchema = z.object({
+  workoutPlanId: z.uuid(),
+  workoutDayId: z.uuid(),
+});
+
+export const WorkoutExerciseDetailSchema = z.object({
+  id: z.uuid(),
+  name: z.string(),
+  order: z.number(),
+  workoutDayId: z.uuid(),
+  sets: z.number(),
+  reps: z.number(),
+  restTimeInSeconds: z.number(),
+});
+
+export const WorkoutDayDetailSchema = z.object({
+  id: z.uuid(),
+  name: z.string(),
+  isRest: z.boolean(),
+  coverImageUrl: z.url().nullable().optional(),
+  estimatedDurationInSeconds: z.number(),
+  weekDay: z.enum(WeekDay),
+  exercises: z.array(WorkoutExerciseDetailSchema),
+  sessions: z.array(WorkoutSessionSchema),
+});
+
 export const HomeParamsSchema = z.object({
   date: z.iso.date(),
 });
