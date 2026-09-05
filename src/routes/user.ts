@@ -19,6 +19,7 @@ export const userRoutes = async (app: FastifyInstance) => {
     method: "GET",
     url: "/",
     schema: {
+      operationId: "getUserTrainData",
       tags: ["User"],
       summary: "Get the authenticated user's train data",
       response: {
